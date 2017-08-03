@@ -10,8 +10,7 @@ public class AnswerTest {
 
 
     protected String leftWindow = "X=5 Y=9 W=10 H=40";
-    protected String middleWindow = "X=16 Y=9 W=10 H=40";
-    protected String getLeftWindow = "X=6 Y=1 W=1 H=1";
+    protected String rightWindow = "X=16 Y=9 W=10 H=40";
 
 
     @Test
@@ -22,14 +21,16 @@ public class AnswerTest {
     }
     @Test
     public void should_return_enclosing_coordinates() {
-        Window enclosing = Answer.getEnclosing(new String[]{leftWindow, middleWindow});
+        Window enclosing = Answer.getEnclosing(new String[]{leftWindow, rightWindow});
         Window expected = Window.fromStringDimensions("X=5 Y=9 W=21 H=40");
         assertThat(enclosing, WindowMatcher.isWindow(expected));
     }
 
     @Test
     public void should_return_closing_over_three_windows() {
-        Window enclosing = Answer.getEnclosing(new String[]{"X=0 Y=1 W=1 H=1", "X=3 Y=2 W=1 H=2", "X=6 Y=1 W=1 H=1"});
+        Window enclosing = Answer.getEnclosing(new String[]{"X=0 Y=1 W=1 H=1",
+                                                            "X=3 Y=2 W=1 H=2",
+                                                            "X=6 Y=1 W=1 H=1"});
         Window expected = new Window.Builder().withXPosition(0)
                                               .withYPosition(1)
                                               .withWidth(7)
@@ -37,8 +38,6 @@ public class AnswerTest {
         assertThat(enclosing, WindowMatcher.isWindow(expected));
 
     }
-
-
 
     @Test
     public void should_implement_expected_toString() {
