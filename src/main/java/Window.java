@@ -44,9 +44,6 @@ public class Window {
     }
 
 
-    public int getLowerRightX() {
-        return xPosition + width;
-    }
     public int getXPosition() {
         return xPosition;
     }

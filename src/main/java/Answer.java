@@ -8,7 +8,7 @@ public class Answer {
 
     }
 
-    public String getEnclosingRectangle(String windowDims[]) {
+    public static String getEnclosingRectangle(String windowDims[]) {
         Window enclosingWindow = getEnclosing(windowDims);
         if (enclosingWindow != null) {
             return enclosingWindow.toString();
@@ -17,7 +17,7 @@ public class Answer {
         }
     }
 
-    public Window getEnclosing(String[] windowDims) {
+    public static Window getEnclosing(String[] windowDims) {
         List<Window> windows = new ArrayList<Window>();
         for (int i = 0; i < windowDims.length; i++) {
             String windowDim = windowDims[i];
@@ -27,7 +27,7 @@ public class Answer {
         return getEnclosingRectangle(windows);
     }
 
-    public Window getEnclosingRectangle(List<Window> windows) {
+    public static Window getEnclosingRectangle(List<Window> windows) {
         Integer leastX = null;
         Integer leastY = null;
         Integer mostX = null;
